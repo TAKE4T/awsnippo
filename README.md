@@ -37,9 +37,17 @@ npm run preview
 
 ## AWS デプロイメント
 
-このアプリケーションは複数の方法でAWSにデプロイできます：
+### GitHub → AWS Amplify連携デプロイ (推奨)
 
-### 1. AWS Amplify (推奨)
+1. GitHubリポジトリを作成してコードをプッシュ
+2. AWS AmplifyでGitHubリポジトリと連携
+3. 自動デプロイが設定される
+
+詳細手順は [DEPLOY.md](./DEPLOY.md) を参照してください。
+
+### その他のデプロイ方法
+
+#### 1. AWS Amplify CLI
 
 ```bash
 # Amplify CLIのインストール
@@ -49,14 +57,14 @@ npm install -g @aws-amplify/cli
 ./scripts/deploy-amplify.sh
 ```
 
-### 2. S3 + CloudFront
+#### 2. S3 + CloudFront
 
 ```bash
 # S3バケットとCloudFrontを使用したデプロイ
 ./deploy.sh
 ```
 
-### 3. CloudFormation
+#### 3. CloudFormation
 
 ```bash
 # CloudFormationテンプレートを使用
@@ -66,14 +74,14 @@ aws cloudformation create-stack \
   --parameters ParameterKey=BucketName,ParameterValue=your-bucket-name
 ```
 
-### 4. Docker + ECS
+#### 4. Docker + ECS
 
 ```bash
 # DockerイメージをビルドしてECSにデプロイ
 ./scripts/deploy-docker.sh
 ```
 
-### 5. Serverless Framework
+#### 5. Serverless Framework
 
 ```bash
 # Serverless Frameworkを使用
