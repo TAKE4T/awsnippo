@@ -92,7 +92,7 @@ export function TaskSelector({ onCreateTask }: TaskSelectorProps) {
           <label className="block mb-2">タスクを選択</label>
           <Select
             value={selectedTask?.id || ""}
-            onValueChange={(value) => {
+            onValueChange={(value: string) => {
               const task = predefinedTasks.find(t => t.id === value);
               setSelectedTask(task || null);
             }}
