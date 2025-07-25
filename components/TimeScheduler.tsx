@@ -20,9 +20,9 @@ interface TimeSchedulerProps {
 
 const generateTimeSlots = (): string[] => {
   const slots: string[] = [];
-  for (let hour = 7; hour <= 23; hour++) {
+  for (let hour = 9; hour <= 20; hour++) {
     slots.push(`${hour.toString().padStart(2, '0')}:00`);
-    if (hour < 23) {
+    if (hour < 20) {
       slots.push(`${hour.toString().padStart(2, '0')}:30`);
     }
   }
@@ -36,8 +36,8 @@ const calculateEndTime = (startTime: string, durationMinutes: number): string =>
   const endHours = Math.floor(endMinutes / 60);
   const endMins = endMinutes % 60;
   
-  if (endHours >= 24) {
-    return "23:59";
+  if (endHours > 20) {
+    return "20:00";
   }
   
   return `${endHours.toString().padStart(2, '0')}:${endMins.toString().padStart(2, '0')}`;
@@ -52,8 +52,8 @@ const isTimeSlotAvailable = (
   const startMinutes = startHour * 60 + startMin;
   const endMinutes = startMinutes + durationMinutes;
   
-  // Check if task goes beyond working hours (23:00)
-  if (endMinutes > 23 * 60) {
+  // Check if task goes beyond working hours (20:00)
+  if (endMinutes > 20 * 60) {
     return false;
   }
   
@@ -117,7 +117,7 @@ export function TimeScheduler({ scheduledTasks, onTaskScheduled, onTaskRemoved }
   return (
     <Card className="h-full">
       <CardHeader>
-        <CardTitle>稼働時間スケジュール (7:00 - 23:00)</CardTitle>
+        <CardTitle>稼働時間スケジュール (9:00 - 20:00)</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="space-y-1">

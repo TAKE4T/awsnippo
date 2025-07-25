@@ -100,12 +100,12 @@ export function TaskSelector({ onCreateTask }: TaskSelectorProps) {
             <SelectTrigger>
               <SelectValue placeholder="タスクを選択してください" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-white">
               {Object.entries(tasksByCategory).map(([category, tasks]) => (
                 <div key={category}>
                   <div className="px-2 py-1.5 text-sm font-medium text-muted-foreground">
                     {category}
-                  </div>
+                  </div>  
                   {tasks.map((task) => (
                     <SelectItem key={task.id} value={task.id}>
                       <div className="flex items-center gap-2">
@@ -128,7 +128,7 @@ export function TaskSelector({ onCreateTask }: TaskSelectorProps) {
             <SelectTrigger>
               <SelectValue placeholder="時間を選択してください" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-white">
               {timeOptions.map((option) => (
                 <SelectItem key={option.value} value={option.value}>
                   {option.label}
